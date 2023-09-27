@@ -9,6 +9,6 @@ public class Contact<V, N> {
 
     @Override
     public String toString() {
-        return "" + name + " -> " + number + "";
+        return " " + name + " -> " + number + "";
     }
 }
