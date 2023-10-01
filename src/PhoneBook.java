@@ -2,7 +2,7 @@ import java.util.*;
 
 public class PhoneBook {
     public static Scanner scanner = new Scanner(System.in);
-    public static Map<Group, Contact> map = new HashMap<>();
+    public static Map<Group, List<Contact>> map = new HashMap<>();
 
     public static void start() {
         while (true) {
@@ -28,7 +28,7 @@ public class PhoneBook {
                 searchContactByNumber();
                 break;
             case 4:
-                mapOutput();
+//                mapOutput();
                 break;
             default:
                 if (Integer.parseInt(func) > 4 || (Integer.parseInt(func) < 0)) {
@@ -53,21 +53,18 @@ public class PhoneBook {
         String group = divide[0];
         String name = divide[1];
         String number = divide[2];
-        map.put(new Group<>(group), new Contact<>(name, number));
-    }
-
-    public static void mapOutput() {
-        for (Map.Entry entry : map.entrySet()) {
-            System.out.println(entry);
-        }
+        map.put(new Group<>(group), Arrays.asList(new Contact<>(name, number)));
     }
 
     public static void searchContactByGroup() {
         System.out.println("Введите имя контакта который хотите найти");
         String input = scanner.nextLine();
-        for (Map.Entry entry : map.entrySet()) {
-            if (!map.isEmpty()) {
-                System.out.println(entry.getValue());
+        for(Group group : map.keySet()){
+            if (input.equals(group.getName())) {
+                System.out.print(group + "");
+                for (Contact contact : map.get(group)) {
+                    System.out.println(" " + contact);
+                }
             }
         }
     }
@@ -76,9 +73,15 @@ public class PhoneBook {
         System.out.println("Введите номер телефона контакта который хотите найти");
         String input = scanner.nextLine();
         for (Map.Entry entry : map.entrySet()) {
-            if (!map.isEmpty()) {
-                System.out.println(entry.getValue());
+            if (entry.equals(input)) {
+                System.out.println(entry);
             }
         }
     }
+
+//    public static void mapOutput() {
+//        for (Map.Entry<Group, Contact> entry : map.entrySet()) {
+//            System.out.println(entry.getKey() + " " + entry.getValue());
+//        }
+//    }
 }

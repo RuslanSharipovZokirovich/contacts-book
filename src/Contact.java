@@ -7,8 +7,12 @@ public class Contact<V, N> {
         this.number = number;
     }
 
+//    String getName() {
+//        return (String) name + "->" + number;
+//    }
+
     @Override
     public String toString() {
-        return " " + name + " -> " + number + "";
+        return "" + name + " -> " + number + "";
     }
 }
