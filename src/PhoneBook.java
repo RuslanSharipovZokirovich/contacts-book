@@ -28,7 +28,7 @@ public class PhoneBook {
                 searchContactByNumber();
                 break;
             case 4:
-//                mapOutput();
+                mapOutput();
                 break;
             default:
                 if (Integer.parseInt(func) > 4 || (Integer.parseInt(func) < 0)) {
@@ -70,18 +70,21 @@ public class PhoneBook {
     }
 
     public static void searchContactByNumber() {
-        System.out.println("Введите номер телефона контакта который хотите найти");
+        System.out.println("Введите номер телефона контакта который хотите найти в группе");
         String input = scanner.nextLine();
-        for (Map.Entry entry : map.entrySet()) {
-            if (entry.equals(input)) {
-                System.out.println(entry);
-            }
-        }
+//        for (Group group : map.keySet()) {
+//            if (input.equals(group.getName())) {
+//                System.out.println(group);
+//                for (Contact aps : map.get(group)) {
+//                    System.out.println(aps);
+//                }
+//            }
+//        }
     }
 
-//    public static void mapOutput() {
-//        for (Map.Entry<Group, Contact> entry : map.entrySet()) {
-//            System.out.println(entry.getKey() + " " + entry.getValue());
-//        }
-//    }
+    public static void mapOutput() {
+        for (Map.Entry<Group, List<Contact>> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+    }
 }
